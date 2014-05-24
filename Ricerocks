@@ -250,14 +250,10 @@ def draw(canvas):
                                 [WIDTH / 2 + 1.25 * wtime, HEIGHT / 2], [WIDTH - 2.5 * wtime, HEIGHT])
     canvas.draw_image(debris_image, [size[0] - wtime, center[1]], [2 * wtime, size[1]], 
                                 [1.25 * wtime, HEIGHT / 2], [2.5 * wtime, HEIGHT])
-    
-    # draw UI
-    canvas.draw_text("Lives", [50, 50], 22, "White")
-    canvas.draw_text("Score", [680, 50], 22, "White")
-    canvas.draw_text(str(lives), [50, 80], 22, "White")
-    canvas.draw_text(str(score), [680, 80], 22, "White")
-    
-    # draw and update ship and sprites
+    canvas.draw_text('Lives',[50,50], 30,'White')
+    canvas.draw_text(str(lives),[67,80],30,'White')
+    canvas.draw_text('Score', [700, 50], 30, 'White')
+    canvas.draw_text(str(score), [717, 80], 30, 'White')
     my_ship.draw(canvas)
     my_ship.update()
     process_sprite_group(rock_group, canvas)
