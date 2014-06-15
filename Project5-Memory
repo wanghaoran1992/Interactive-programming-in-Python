@@ -1,0 +1,66 @@
+#http://www.codeskulptor.org/#user31_0wgbnYJx16_1.py
+
+import simplegui
+import random
+
+# helper function to initialize globals
+def new_game():
+    global cards, state, helper1, turns, cardsflipped
+    
+    cards=[]
+    for i in range(16):
+        cards=cards+[i//2]
+    
+    random.shuffle(cards)
+    
+    cardsflipped=[]
+    for i in range(16):
+        cardsflipped = cardsflipped+[False]  
+        
+    state = 0
+    turns = 0
+    helper1 = []
+
+new_game()
+     
+# define event handlers
+def mouseclick(pos):
+    global state, turns, helper1, helper2
+    n = pos[0] // 50
+    if cardsflipped[n] == False:
+        if helper1!=[]:
+            for i in helper1:
+                cardsflipped[i] = False
+        cardsflipped[n] = True
+        state += 1
+    if state == 1:
+        helper2 = n
+    if state == 2:
+        if cards[n] != cards[helper2]:
+            helper1 = [helper2, n]
+        else:
+            helper1 = []
+        state = 0
+        turns += 1
+    
+                        
+# cards are logically 50x100 pixels in size    
+def draw(canvas):
+    for i in range(16):
+        canvas.draw_text(str(cards[i]), (15 + i * 50, 70), 40, "White")
+        if cardsflipped[i] == False:
+            canvas.draw_polygon([(0 + i * 50, 0), (0 + i * 50, 100), (50 + i * 50, 100), (50 + i * 50, 0)], 1, "Black", "Green")
+    l.set_text("Turns = " + str(turns))
+            
+# create frame and add a button and labels
+frame = simplegui.create_frame("Memory", 800, 100)
+frame.add_button("Restart", new_game)
+l=frame.add_label("Turns = 0")
+
+
+# register event handlers
+frame.set_mouseclick_handler(mouseclick)
+frame.set_draw_handler(draw)
+
+# get things rolling
+frame.start()
