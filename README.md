@@ -1,6 +1,27 @@
 Interactive-programming-in-Python
 =================================
 
-For the course of Interactive Programming in Python on Coursera
+This is a repository for the course of Interactive Programming in Python on Coursera
 
-I'm sorry that I posted a link to github but not codeskulptor as I am in China and codeskulptor can not work well here due to the Great Firewall of Chinese government. For the previous assignments, I managed to get the access to codeskulptor via VPN through Spotflux. But this time when I finished my code and tried to save my scripts in codeskulptor, it somehow did not allow me to do it. I have no where to go only to save my scripts in Github. I hope you could understand the situation and I'm sorry for the inconvenience due to the issue.
+
+This class is nine weeks long. For most weeks,  we watched two sets of videos (part a and part b) and then completed one quiz for each set. The main task for each week is to complete a mini-project. 
+
+Week--------------	Topics------------------------------------------------Mini-project
+
+0	------------Expressions, variables and assignments---------------------"We want... a shrubbery!"
+
+1	------------Functions, logic, conditionals-----------------------------"Rock-Paper-Scissors-Lizard-Spock" game
+
+2	------------Event-driven programming, local and global variables-------"Guess the Number" game
+
+3 ----------The canvas, static drawing, timers, interactive drawing------"Stopwatch:" The Game
+
+4	-----------Lists, keyboard input, motion, positional/velocity control---"Pong" game
+
+5	------------Mouse input, more lists, dictionaries, images	-------------"Memory" game
+
+6	------------Classes, tiled images	-------------------------------------"Blackjack" game
+
+7	-------Acceleration and friction, spaceship class, sprite class, sound	---Spaceship from "RiceRocks" game
+
+8--------	Sets, groups of sprites, collisions, sprite animation	-------------Full "RiceRocks" game
