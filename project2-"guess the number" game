@@ -1,0 +1,94 @@
+
+# link to codesculptor: http://www.codeskulptor.org/#user29_Z6DTbGFMptBg563_0.py
+
+import simplegui
+import random
+
+# initialize global variables used in your code
+high=99
+number=random.randint(0,high)
+guessesleft=7
+
+# helper function to start and restart the game
+def new_game():
+    global number,high, guessesleft
+    number=random.randint(0,high)
+    if high==99:
+        guessesleft=7
+        print "New game. Range is from 0 to 100 (not including)."
+        print "Number of remaining guesses is 7."
+        print "   "
+    elif high==999:
+        guessesleft=10
+        print "New game. Range is from 0 to 1000 (not including)."
+        print "Number of remaing guesses is 10."
+        print "    "
+
+
+# define event handlers for control panel
+def range100():
+    # button that changes range to range [0,100) and restarts
+    global high,guessesleft
+    high=99
+    guessesleft=7
+    new_game()
+
+def range1000():
+    # button that changes range to range [0,1000) and restarts
+    global high, guessesleft
+    high=999
+    guessesleft=10
+    new_game()
+
+def input_guess(guess):
+        global guessesleft
+        if float(guess)>number:
+                guessesleft-=1
+                print "Guess was "+str(guess)+".",
+                print "Number of remaining guesses is "+str(guessesleft)
+                print "Higher!"
+                print "   "
+                if guessesleft==0:
+                    print "You have run out of guesses available. Game is over. Try to guess by binary search."
+                    new_game()
+        elif float(guess)<number:
+            if guessesleft>0:
+                guessesleft-=1
+                print "Guess was "+str(guess)+".",
+                print "Number of remaining guesses is "+str(guessesleft)
+                print "Lower!"
+                print "    "
+                if guessesleft==0:
+                    print "You have run out of guesses available. Game is over. Try to guess by binary search."
+                    new_game()
+            else:
+                print "You have run out of guesses available. Game is over. Try to guess by binary search."
+                new_game()
+        elif float(guess)==number:
+            if guessesleft>0:
+                guessesleft-=1
+                print "Guess was "+str(guess)+".",
+                print "Number of remaining guesses is "+str(guessesleft)
+                print "Correct!"
+                print "     "
+                new_game()
+                
+            else:
+                print "You have run out of guesses available. Game is over. Try to guess by binary search."
+                new_game()
+        
+
+    
+# create frame
+f=simplegui.create_frame("Guess the number",200,200)
+
+
+# register event handlers for control elements
+f.add_button("Range is [0,100)", range100, 200)
+f.add_button("Range is [0,1000)", range1000, 200)
+f.add_input("Enter a guess",input_guess, 200)
+# call new_game and start frame
+
+new_game()
+
+# always remember to check your completed program against the grading rubric
